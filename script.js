@@ -22,24 +22,24 @@ const   personAge = +prompt ( 'Please, enter the person age:' ),
 
 // ---
 
-    function isWorkingAgePerson ( age ) {
+        function isWorkingAgePerson ( age ) {
 
-        const   lowerAgeLimit = 16,
-                upperAgeLimit = 65,
+            const   lowerAgeLimit = 16,
+                    upperAgeLimit = 65,
+                    
+                    ageResult = (( isNaN ( age ) || age <= 0 ))
                 
-                ageResult = (( isNaN ( age ) || age <= 0 )) // вот тут хотел поинтересоваться, насколько корректно задавать определение и вычисление переменной одновременно.
+                                ? alert ("Incorrect data") 
             
-                            ? alert ("Incorrect data") 
-        
-                            : (( age >= lowerAgeLimit ) && ( age <= upperAgeLimit ))
+                                : (( age >= lowerAgeLimit ) && ( age <= upperAgeLimit ))
+                    
+                                    ?  true 
                 
-                                ?  true 
-            
-                                : false;
+                                    : false;
 
-                return ageResult;
+                    return ageResult;
 
-                };
+                    };
 
 // ---
 
@@ -137,25 +137,37 @@ const   sideA = +prompt ( 'Please, enter the side A:' ),
  *  @param {number} a the triangle side lenght. Can't be 0 or degree
  *  @param {number} b the triangle side lenght. Can't be 0 or degree
  *  @param {number} c the triangle side lenght. Can't be 0 or degree
- *  @returns {boolean} The boolean possibility of triangle cretion
+ *  @returns {boolean} The boolean possibility of triangle creation
  */
         function checkTriangleOpportunity ( a, b, c ){
 
-            const sidesCheck = ((a === 0 ) || ( b === 0 ) || ( c === 0 )) ? false
-            
-                    : ( ( a + b ) >= c ) ? true 
+            if (( a === 0 ) || ( b === 0 ) || ( c === 0 )) {
+                
+                return false;
 
-                    : ( ( b + c ) >= a ) ? true
-    
-                    : ( ( c + a ) >= b ) ? true
-    
-                    : false;
+            } else if ( ( a + b ) >= c ) {
 
-            return sidesCheck;
+                        if ( ( b + c ) >= a ) {
 
-        }
+                        }   if ( ( c + a ) >= b ){
 
-// ---        
+                                return true;
+
+                            }   else {
+                                
+                                    return false;
+                            
+                                };
+
+                        } else {
+                        
+                            return false;
+                    
+                    };
+
+        };
+
+// ---
 
 // TASK 4
 // Написать функции расчета площадей (или поверхности) следующих фигур/тел:
